@@ -64,7 +64,7 @@ export default {
   padding: 0.16rem 0.24rem 0.16rem 0;
   line-height: 0.22rem;
   font-size: 0.16rem;
-  color: $content-fontcolor;
+  color: $content-fontColor;
   @include ellipsis;
 }
 
@@ -82,8 +82,8 @@ export default {
 }
 .search {
   height: 0.32rem;
-  background-color: #f5f5f5;
-  color: #b7b7b7;
+  background-color: $search-bgColor;
+  color: $search-fontColor;
   border-radius: 0.16rem;
   font-size: 0.14rem;
   margin-block: 0.12rem;
@@ -121,7 +121,7 @@ export default {
     &__desc {
       margin: 0.06rem 0 0.16rem 0;
       text-align: center;
-      color: $content-fontcolor;
+      color: $content-fontColor;
     }
   }
 }

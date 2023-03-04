@@ -22,7 +22,7 @@
     <div class="wrapper__login__link" @click="handleRegisterClick">
       立即注册
     </div>
-    <button @click="handleTest">测试</button>
+
     <ToastPage v-if="show" :message="toastMessage" />
   </div>
 </template>
@@ -30,7 +30,7 @@
 <script>
 import { reactive, toRefs } from "vue";
 import { useRouter } from "vue-router";
- import axios from "axios";
+
 import { post } from "../../utils/request";
 import ToastPage, { useToastEffect } from "../../components/Toast";
 //const {showToast} = useToastEffect()
@@ -44,16 +44,21 @@ const userLoginEffect = (showToast) => {
   });
   const handleLogin = async () => {
     try {
-      const result = await post("/api/user/login", {
-        username: data.username,
-        password: data.password,
-      });
+      if(data.username ==='' || data.password ===''){
+      showToast('用户名或密码错误')
+        return
+      }
+        const result = await post("/api/user/login", {
+           username:data.username,
+           password:data.password
+    });
+      
+
       if (result?.errno === 0) {
         //result?.data?.errno
         localStorage.isLogin = true;
         router.push({ name: "Home" });
       } else {
-        console.log("*** 123");
         showToast("登录失败");
         // data.showToast = true;
         // data.toastMessage = "登录失败";
@@ -64,7 +69,6 @@ const userLoginEffect = (showToast) => {
         // }, 2000);
       }
     } catch (e) {
-      console.log("*** 456");
       showToast("请求失败");
       // data.showToast = true;
       // data.toastMessage = "登录失败";
@@ -84,7 +88,7 @@ const userLoginEffect = (showToast) => {
     //showToast
   };
 };
-const useRegisterEffect = () => {
+const RegisterEffect = () => {
   const router = useRouter();
   const handleRegisterClick = () => {
     router.push({ name: "Register" });
@@ -105,12 +109,8 @@ export default {
     // const router = useRouter();
     const { show, toastMessage, showToast } = useToastEffect();
     const { username, password, handleLogin } = userLoginEffect(showToast);
-    const { handleRegisterClick } = useRegisterEffect();
+    const { handleRegisterClick } = RegisterEffect();
 
-    
-   const  handleTest =async() =>{
-      const result2 = await get('/ https://quranenc.com/api/v1/translations/list/[[{语言}]]/？localization={language_iso_code}')
-    }
     // }).then(()=>{
     //   confirm('成功')
     //   localStorage.isLogin = true

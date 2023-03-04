@@ -2,10 +2,10 @@
   <div class="wrapper">
     <StaticPart />
     <NearBy />
-  
+  <DockerPage />
   </div>
   
-  <DockerPage />
+  
 </template>
 
 

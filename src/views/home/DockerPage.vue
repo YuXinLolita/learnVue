@@ -30,18 +30,18 @@ setup(){
 <style lang="scss" scoped>
 @import "../../style/viriables.scss";
 @import "../../style/mixins.scss";
-.wrapper {
-  position:absolute;
-  overflow-y: auto;
-  left: 0;
-  top: 0;
-  bottom: 0.5rem;
-  right: 0;
-  padding: 0 0.18rem 0.18rem;
-}
+// .wrapper {
+//   position:absolute;
+//   overflow-y: auto;
+//   left: 0;
+//   top: 0;
+//   bottom: 0.5rem;
+//   right: 0;
+//   padding: 0 0.18rem 0.18rem;
+// }
 .docker {
   display: flex;
-  position: absolute;
+  position: fixed;
    left: 0;
   bottom: 0;
   box-sizing: border-box;
@@ -50,7 +50,7 @@ setup(){
   width: 100%;
   height: 0.49rem;
   border-top: 0.01rem solid $content-bgColor;
-  color: $content-fontcolor;
+  color: $content-fontColor;
   &__item {
     flex: 1;
     text-align: center;
